@@ -1,3 +1,6 @@
+div {display: inline-block;}
+p {display: inline-block;}
+
 body {
     padding: 0;
     overflow: hidden;
@@ -31,4 +34,41 @@ p.main {
   position: absolute;
   background-color: #fff;
   z-index: 2000;
+}
+
+.legend {
+    position: absolute;
+    right: 100px;
+    width: 200px;
+    top: 500px;
+    bottom: 100px;
+    overflow-y: auto;
+    font-size: 12px;
+    padding: 10px
+}
+
+.legend-block {
+  height: 10px;
+  width: 10px;
+  opacity: 0.5
+}
+
+#MON-block {
+  background-color: red
+}
+
+#TUE-block {
+  background-color: blue
+}
+
+#WED-block {
+  background-color: green
+}
+
+#THU-block {
+  background-color: orange
+}
+
+#FRI-block {
+  background-color: yellow
 }

@@ -123,11 +123,24 @@ of the application to report this information.
 
 ===================== */
 
-var dataset = "https://raw.githubusercontent.com/CPLN692-MUSA611/datasets/master/geojson/philadelphia-garbage-collection-boundaries.geojson"
+// Load dataset
+var dataset = "https://raw.githubusercontent.com/CPLN692-MUSA611/datasets/master/geojson/philadelphia-garbage-collection-boundaries.geojson?raw=true";
 var featureGroup;
 
+// Set myStyle, Set Different Style for Different Properties
 var myStyle = function(feature) {
-  return {};
+  console.log(feature);
+  if(feature.properties.COLLDAY == "MON"){
+    return {fillColor: 'red'};
+  } else if(feature.properties.COLLDAY == 'TUE'){
+    return {fillColor: 'blue'};
+  } else if(feature.properties.COLLDAY == 'WED'){
+    return {fillColor: 'green'};
+  } else if(feature.properties.COLLDAY == 'THU'){
+    return {fillColor: 'orange'};
+  } else if(feature.properties.COLLDAY == 'FRI'){
+    return {fillColor: 'yellow'};
+  }
 };
 
 var showResults = function() {
@@ -143,7 +156,7 @@ var showResults = function() {
   $('#results').show();
 };
 
-
+// Run Everytime Layer is Clicked
 var eachFeatureFunction = function(layer) {
   layer.on('click', function (event) {
     /* =====================
@@ -151,13 +164,27 @@ var eachFeatureFunction = function(layer) {
     Check out layer.feature to see some useful data about the layer that
     you can use in your application.
     ===================== */
-    console.log(layer.feature);
+    if (layer.feature.properties.COLLDAY == "MON") {
+      $(".day-of-week").text("Monday"); // class day-of-week
+    } else if (layer.feature.properties.COLLDAY == "TUE") {
+      $(".day-of-week").text("Tuesday");
+    } else if (layer.feature.properties.COLLDAY == "WED") {
+      $(".day-of-week").text("Wednesday");
+    } else if (layer.feature.properties.COLLDAY == "THU") {
+      $(".day-of-week").text("Thursday");
+    } else if (layer.feature.properties.COLLDAY == "FRI") {
+      $(".day-of-week").text("Friday");
+    }
+    console.log("Test Success");
     showResults();
   });
 };
 
+// Filter Data (Display Some, Don't Display Others: Use if, if else)
 var myFilter = function(feature) {
-  return true;
+  if (feature.properties.COLLDAY === " "){
+    return false;
+  } else {return true;}
 };
 
 $(document).ready(function() {

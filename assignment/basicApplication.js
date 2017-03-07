@@ -39,14 +39,25 @@ var state = {
 };
 
 var clickNextButton = function() {
-
-}
+  if (state.slideNumber<4){
+    state.slideNumber += 1;
+    console.log("Current Page: " + state.slideNumber);
+  } else {
+    console.log("You have reached the last page.");
+  }
+};
 
 var clickPreviousButton = function() {
-
-}
+  if (state.slideNumber>0){
+    state.slideNumber -= 1;
+    console.log("Current Page: " + state.slideNumber);
+  } else {
+    console.log("You have reached the first page.");
+  }
+};
 
 var saySlideName = function(slide) {
   // saySlideName uses console.log to "say" the name of the slide it is given. It should run when
   // someone clicks on one of the buttons.
-}
+  console.log("Current Page: " + state.slideData);
+};
